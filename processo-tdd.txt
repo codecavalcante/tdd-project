@@ -1,0 +1,8 @@
+O processo TDD segue um ciclo: primeiro escrevemos um teste que ainda falha,
+depois escrevemos o codigo minimo para o teste passar, e entao rodamos o teste
+novamente para confirmar. Podemos tambem refatorar o codigo, sempre usando os
+testes para garantir que nada quebrou.
+
+Usamos dois tipos de teste: Testes Funcionais (do ponto de vista do usuario,
+guiam o desenvolvimento em alto nivel) e Testes de Unidade (do ponto de vista
+do desenvolvedor, guiam a escrita de codigo limpo em baixo nivel).
