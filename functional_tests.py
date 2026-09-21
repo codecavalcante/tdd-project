@@ -24,16 +24,22 @@ class NewVisitorTest(unittest.TestCase):
         self.assertEqual(inputbox.get_attribute('placeholder'), 'Enter a to-do item')
 
         inputbox.send_keys('Estudar testes funcionais')
-
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
 
         table = self.browser.find_element(By.ID, 'id_list_table')
         rows = table.find_elements(By.TAG_NAME, 'tr')
-        self.assertTrue(
-            any(row.text == '1: Estudar testes funcionais' for row in rows),
-            "New to-do item did not appear in table"
-        )
+        self.assertIn('1: Estudar testes funcionais', [row.text for row in rows])
+
+        inputbox = self.browser.find_element(By.ID, 'id_new_item')
+        inputbox.send_keys('Estudar testes de unidade')
+        inputbox.send_keys(Keys.ENTER)
+        time.sleep(1)
+
+        table = self.browser.find_element(By.ID, 'id_list_table')
+        rows = table.find_elements(By.TAG_NAME, 'tr')
+        self.assertIn('1: Estudar testes funcionais', [row.text for row in rows])
+        self.assertIn('2: Estudar testes de unidade', [row.text for row in rows])
 
 if __name__ == '__main__':
     unittest.main()
